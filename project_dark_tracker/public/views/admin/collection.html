@@ -1,0 +1,55 @@
+{% extends "admin/base_site.html" %}
+
+{% block title %}List of tracked site{% endblock %}
+
+{% block content %}
+<div id="content-main">
+    <div class="result">
+        
+<style>
+   div.elipse_text {
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+</style>
+ <table id="result_list">
+    <thead>
+        <tr>
+            <th scope="col" class="action-checkbox-column">
+               <div class="clear"></div>
+            </th>
+            <th scope="col" class="sortable column-email">
+                Total Found
+            </th>
+            <th scope="col" class="sortable column-username sorted ascending">
+                   url
+            </th>
+            <th scope="col" class="sortable column-email">
+                pattern
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in data.url %}
+            <tr>
+                <td >{{forloop.counter0}}</td>
+                <td>{{ data.total_count|get_item:forloop.counter0 }}</td>
+                <td>
+                    <div class="elipse_text"><a href="{{item}}" target="_blank">{{item}}</a></div>
+                </td>
+                <td>
+                    {% autoescape off %}
+                        {{data.categories|get_item:forloop.counter0|set_iterator_custom}}
+                    {% endautoescape %}
+                    
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    </div>
+</div>
+{% endblock %}

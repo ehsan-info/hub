@@ -1,0 +1,265 @@
+{% extends "admin/base_site.html" %}
+
+{% block title %}List of patterns{% endblock %}
+
+{% block content %}
+<div id="content-main">
+    
+    <ul class="object-tools">
+      <li>
+        <!--<a href="add" class="addlink">-->
+        <!--  Add Category-->
+        <!--</a>-->
+        <a href="javascript:void" class="addlink add_cat">
+          Add Category
+        </a>
+      </li>
+    </ul>
+    
+<!--https://docs.huihoo.com/django/en/1.0/chapter17/index.html-->
+<!--<br />-->
+<div class="result">
+    <table id="result_list">
+    <thead>
+        <tr>
+            <th scope="col" class="action-checkbox-column">
+               <div class="clear"></div>
+            </th>
+            <th scope="col" class="sortable column-username sorted ascending">
+                   pattern
+            </th>
+            <th scope="col" class="sortable column-email">
+                Category
+            </th>
+            <th scope="col" class="sortable column-email">
+                Action
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in data %}
+       
+            {% if item.1|length > 0 %}
+            <tr>
+                <td>{{item.0}}</td>
+                <td>{{item.1}}</td>
+                <td>{{item.2}}</td>
+                <td>
+                    
+                    <a href="javascript:void(0);" class="delete-pattern" style="text-decoration:none;color:red;font-size:20px;" data-index="{{item.0}}">&#128465;</a>
+                    <a href="javascript:void(0);" class="edit-pattern" 
+                    data-pattern="{{item.1}}" data-category="{{item.3}}"  data-index="{{item.0}}"  style="text-decoration:none;color:green;
+                    -moz-transform: scale(1, -1);
+display: inline-block; 
+    font-size: 20px;
+
+    -webkit-transform: matrix(-1, 0, 0, 1, 0, 0);
+    -moz-transform: matrix(-1, 0, 0, 1, 0, 0);
+    -o-transform: matrix(-1, 0, 0, 1, 0, 0);
+    transform: matrix(-1, 0, 0, 1, 0, 0);">&#9998;</a>
+                
+                </td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+    </tbody>
+    </table>
+</div>
+
+</div>
+
+<script>
+    var select_cat_data='';
+</script>
+
+{% for item in catlist.category %}
+    {% if item|length > 0 %}
+    <script>
+        select_cat_data +='<option value="{{catlist.id|get_item:forloop.counter0}}">{{item}}</option>';
+    </script>
+    {% endif %}
+{% endfor %}
+
+<input type="hidden" value="{{csrf_token}}" id="csrf_token_form" />
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+<script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+
+<script>
+    $(document).ready(function(){
+        
+                $("a.edit-pattern").on("click",function(){
+                    
+            var index = $(this).data('index');
+            var current_cat = $(this).data('category');
+            var current_pat = $(this).data('pattern');
+Swal.fire({
+  title: 'Edit Category',
+  html:`Category:<select id="category" type="text"  class="swal2-input">${select_cat_data}</select>
+                  Pattern: <input id="pattern" type="text"  class="swal2-input" value="${current_pat}">`,
+  showCancelButton: true,
+  confirmButtonText: 'Edit',
+  showLoaderOnConfirm: true,
+  onOpen: (body) => {
+      
+      $('#category').val(Math.trunc(current_cat));
+  },
+  preConfirm: (data) => {
+      
+cat= $('#category').val();
+pat= $('#pattern').val();
+
+    return fetch(`https://darktracker.xyz/tracer/updatePattern/`,
+    {
+  method: 'POST', // or 'PUT'
+  headers: {
+    'Content-Type': 'application/json',
+    "X-CSRFToken": $("input#csrf_token_form").val()
+  },
+  body: JSON.stringify({
+      csrfmiddlewaretoken:$("input#csrf_token_form").val(),
+      index:index,
+      newCat:cat,
+      newPat:pat
+      
+  }),
+})
+      .then(response => {
+          console.log('response',response);
+        if (!response.ok) {
+          throw new Error(response.statusText)
+        }
+        return response.json()
+      })
+      .catch(error => {
+        Swal.showValidationMessage(
+          `Request failed: ${error}`
+        )
+      })
+  },
+  allowOutsideClick: () => !Swal.isLoading()
+}).then((result) => {
+    console.log('result',result);
+  if (result.isConfirmed) {
+    Swal.fire({
+        icon: 'success',
+      title: 'Category updated successfully!!',
+      showDenyButton: false,
+      showCancelButton: false,
+      confirmButtonText: `Ok`,
+    }).then((result) => {
+      location.reload();
+    })
+  }else{
+      Swal.fire({
+        icon: 'error',
+      title: 'Failed to update category!!!',
+      showDenyButton: false,
+      showCancelButton: false,
+      confirmButtonText: `Ok`,
+    }).then((result) => {
+        
+    })
+  }
+})
+        });
+        
+        
+        $("a.delete-pattern").on("click",function(){
+            // console.log($(this).data('index'))
+            $.post('https://darktracker.xyz/tracer/deletePattern/',{index:$(this).data('index'),csrfmiddlewaretoken:$("input#csrf_token_form").val()},function(data){
+                if(data.status_code==1){
+                    Swal.fire({
+                        icon: 'success',
+                      title: 'Pattern removed successfully!!',
+                      showDenyButton: false,
+                      showCancelButton: false,
+                      confirmButtonText: `Ok`,
+                    //   denyButtonText: `Don't save`,
+                    }).then((result) => {
+                      location.reload();
+                    })
+                }else{
+                    Swal.fire({
+                    icon: 'error',
+                  title: 'Failed to delete pattern!!!',
+                  showDenyButton: false,
+                  showCancelButton: false,
+                  confirmButtonText: `Ok`,
+                }).then((result) => {
+                    
+                })
+                }
+                console.log(data);
+            });
+        });
+        
+        $(".add_cat").on("click",function(){
+            swal.fire({
+            showCancelButton:true,
+            html:`Category:<select id="category" type="text"  class="swal2-input">${select_cat_data}</select>
+                  Pattern: <input id="pattern" type="text"  class="swal2-input">`,
+            preConfirm:function(){
+                            cat= $('#category').val();
+                            pat= $('#pattern').val();
+                            
+    return fetch(`https://darktracker.xyz/tracer/addPattern/`,
+    {
+  method: 'POST', // or 'PUT'
+  headers: {
+    'Content-Type': 'application/json',
+    "X-CSRFToken": $("input#csrf_token_form").val()
+  },
+  body: JSON.stringify({
+      csrfmiddlewaretoken:$("input#csrf_token_form").val(),
+      pattern:pat,
+      category:cat
+      
+  }),
+})
+      .then(response => {
+          console.log('response',response);
+        if (!response.ok) {
+          throw new Error(response.statusText)
+        }
+        return response.json()
+      })
+      .catch(error => {
+        Swal.showValidationMessage(
+          `Request failed: ${error}`
+        )
+      })                            
+                                 },
+  allowOutsideClick: () => !Swal.isLoading()
+                     }).then((result) => {
+    console.log('result',result);
+  if (result.isConfirmed) {
+    Swal.fire({
+        icon: 'success',
+      title: 'Pattern added successfully!!',
+      showDenyButton: false,
+      showCancelButton: false,
+      confirmButtonText: `Ok`,
+    }).then((result) => {
+      location.reload();
+    })
+  }else{
+      Swal.fire({
+        icon: 'error',
+      title: 'Failed to add pattern!!!',
+      showDenyButton: false,
+      showCancelButton: false,
+      confirmButtonText: `Ok`,
+    }).then((result) => {
+        
+    })
+  }
+});
+        });
+    });
+</script>
+{% endblock %}

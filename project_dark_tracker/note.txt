@@ -1,0 +1,28 @@
+django-admin startproject dark_pattern
+
+
+python manage.py startapp webapp
+    [
+        webapp>models.py edited
+        webapp>admin.py edited
+    ]
+
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+
+python manage.py createsuperuser
+    user: darkadmin
+    pass: darkPass71
+    email: darkadmin@email.com
+    login: http://127.0.0.1:8000/admin/login
+
+
+
+
+https://docs.djangoproject.com/
+
+https://www.django-rest-framework.org/
+https://www.youtube.com/watch?v=TmsD8QExZ84

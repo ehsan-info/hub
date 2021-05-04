@@ -1,0 +1,29 @@
+{% extends 'views/layouts/app.html' %}
+{% block title %}Tricky{% endblock %}
+{% block content %}
+{% load static %}
+<div class="about_section layout_padding single-page">
+    	<div class="container">
+    		<div class="row">
+    			
+    			<div class="col-md-8">
+    				<div class="about_taital">
+    					<div class="about_text"><span style="color: #c6610f;">Tricky Question</span></div>
+    					<p class="dolor_text">Marketing emails use this tactic all the time. You've probably seen this before. After you register to access 
+						something on the web, you're asked if you want to be placed on a mailing list. This particular approach is fairly standard but 
+						isn’t hugely effective because users have to take an explicit action to opt in. Chances are they’ll be in a hurry and a proportion of 
+						users won't even notice this text. Some websites use mandatory radio buttons with neither option (yes or no) preselected. This way the user can't 
+						get on to the next page without making an explicit choice. This in itself is still above-board. But if we think back to our anti-usability principles, we can 
+						see how not calling attention to this choice can be used to trick us into choosing something we don't actually want.</p>
+    					<div class="read_more single-page-read_more"><a href="{% url 'types-pattern' %}">Go Back</a></div>
+    				</div>
+    			</div>
+				<div class="col-md-4">
+    				<div class="tablet"><img src="{% static 'images/trick-question.png' %}"></div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+
+{% endblock %}

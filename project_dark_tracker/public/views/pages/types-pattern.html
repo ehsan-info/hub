@@ -1,0 +1,98 @@
+{% extends 'views/layouts/app.html' %}
+{% block title %}Types Of Patterns{% endblock %}
+{% block content %}
+
+<div class="blog_section layout_padding"> 
+    <div class="about_section_2 ">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="classified_text">Types of <span style="color: #c6610f;">Dark Patterns</span></div>
+          </div>  
+        </div>
+        <div class="row front">
+          <div class="col-md-12">
+            <h1 class="fron_text"> Trick Question</h1>
+            <p class="using_text">While filling in a form you respond to a question that tricks you into giving an answer you didn't intend. When glanced upon quickly the question appears to ask one thing, but when read carefully it asks another thing entirely.</p>
+			<div class="red_bt more-info"><a href="{% url 'trick' %}">More Information</a></div>
+			<div class="red_bt see-exampl"><a href="https://kidz.diligencecoder.com/elementor-1083/" target="_blank">See Example</a></div>
+		  </div>
+        </div>
+        <div class="row front">
+          <div class="col-md-12">
+            <h1 class="fron_text"> Forced Continuity</h1>
+            <p class="using_text">When your free trial with a service comes to an end and your credit card silently starts getting charged without any warning. In some cases this is made even worse by making it difficult to cancel the membership.</p>
+			<div class="red_bt more-info"><a href="{% url 'forced-continuity' %}">More Information</a></div>
+			<div class="red_bt see-exampl"><a href="#">See Example</a></div>
+		  </div>
+        </div>
+		<div class="row front">
+          <div class="col-md-12">
+            <h1 class="fron_text"> Misdirection</h1>
+            <p class="using_text">Misdirection is the sneakiest type of dark pattern because it exists in a grey area. This sort of tactic is commonplace because it is harder to outlaw, as opposed to the ‘sneak into basket’ tactic (discussed further down the article), which is outlawed in the EU.</p>
+			<div class="red_bt more-info"><a href="{% url 'misdirection' %}">More Information</a></div>
+			<div class="red_bt see-exampl"><a href="#" target="_blank">See Example</a></div>
+		  </div>
+        </div>
+		<div class="row front">
+          <div class="col-md-12">
+            <h1 class="fron_text"> Sneak into basket</h1>
+            <p class="using_text">You attempt to purchase something, but somewhere in the purchasing journey the site sneaks an additional item into your basket, often through the use of an opt-out radio button or checkbox on a prior page.</p>
+			<div class="red_bt more-info"><a href="{% url 'sneak-basket' %}">More Information</a></div>
+			<div class="red_bt see-exampl"><a href="https://www.cellularoutfitter.com/collections/samsung-galaxy-a51-5g/products/premium-ultra-edge-sturdy-shockproof-bumper-transparent-case-black-clear-hr-qbbum-5ga51-clrbk" target="_blank">See Example</a></div>
+		  </div>
+        </div>
+		<div class="row front">
+          <div class="col-md-12">
+            <h1 class="fron_text"> Price Comparison Prevention</h1>
+            <p class="using_text">The retailer makes it hard for you to compare the price of an item with another item, so you cannot make an informed decision.</p>
+			<div class="red_bt more-info"><a href="{% url 'price-comparison' %}">More Information</a></div>
+			<div class="red_bt see-exampl"><a href="https://www.sainsburys.co.uk/webapp/wcs/stores/servlet/gb/groceries/fruit-veg/fruitandveg-essentials?storeId=10151&langId=44&krypto=dPKZqkoBzLyXnrJVED1lUzSlSF7kFMfXHpoZe9yw7%2F5Ws%2F03Uc3T0%2BY9i%2Fxf%2F2dIYcPLuls728T3dgEit%2BAL0MWRZEBkzfqDxBjV2G%2Fn5oINGIwkvXqgjc0KlBrbanGhDvMU0Lrc42rdvUcz05%2BgzJ8rLFdAbYEE2DjjgSp0o97Jpv%2FmfB6RHx1u%2B6DlNQ3pSO0FV%2BjGaP5pkkVbjPFknA%3D%3D&ddkey=https%3Agb%2Fgroceries%2Ffruit-veg%2Ffruitandveg-essentials#langId=44&storeId=10151&catalogId=10241&categoryId=474593&parent_category_rn=12518&top_category=12518&pageSize=60&orderBy=TOP_SELLERS%7CSEQUENCING&searchTerm=&beginIndex=0&facet=" target="_blank">See Example</a></div>
+		  </div>
+        </div>
+		<div class="row front">
+          <div class="col-md-12">
+            <h1 class="fron_text"> Force Cookies</h1>
+            <p class="using_text">The site invites you to read its “cookie policy,” (which, let’s be honest, you’re not going to do), and it may tell you the tracking is to “enhance” your experience — even though it feels like it’s doing the opposite.</p>
+			<div class="red_bt more-info"><a href="{% url 'force-cookies' %}">More Information</a></div>
+			<div class="red_bt see-exampl"><a href="https://www.pacificcoast.com/luxury-pillow-protector-queen/9996.html" target="_blank">See Example</a></div>
+		  </div>
+        </div>
+		<div class="row front">
+          <div class="col-md-12">
+            <h1 class="fron_text"> Fake Urgency Timing</h1>
+            <p class="using_text">Urgency promotes action by giving customers an incentive to act quickly. You can create urgency by running time-limited or quantity-limited sales. Customers want free shipping. Use it as a tool to create urgency by offering it only when customers take quick action.</p>
+			<div class="red_bt more-info"><a href="{% url 'urgency-timing' %}">More Information</a></div>
+			<div class="red_bt see-exampl"><a href="https://www.daraz.com.bd/#hp-flash-sale" target="_blank">See Example</a></div>
+		  </div>
+        </div>
+		<div class="row front">
+          <div class="col-md-12">
+            <h1 class="fron_text"> Confirmshaming</h1>
+            <p class="using_text">'Confirmshaming' is a widespread website conversion tactic which attempts to 'shame' or guilt a user into opting into something, such as signing up to a newsletter or downloading an eBook.</p>
+			<div class="red_bt more-info"><a href="{% url 'confirmshaming' %}">More Information</a></div>
+			<div class="red_bt see-exampl"><a href="#" target="_blank">See Example</a></div>
+		  </div>
+        </div>
+        <div class="row front">
+          <div class="col-md-12">
+            <h1 class="fron_text"> Fake Urgency Scarcity</h1>
+            <p class="using_text">Urgency promotes action by giving customers an incentive to act quickly. You can create urgency by running time-limited or quantity-limited sales. Customers want free shipping. Use it as a tool to create urgency by offering it only when customers take quick action.</p>
+			<div class="red_bt more-info"><a href="{% url 'urgency-scarcity' %}">More Information</a></div>
+			<div class="red_bt see-exampl"><a href="https://www.booking.com/searchresults.html?label=gen173nr-1FCAEoggI46AdIM1gEaEKIAQGYATG4ARfIAQzYAQHoAQH4AQKIAgGoAgO4Av2vjIMGwAIB0gIkY2QwZmVhMGMtMjAzZC00MzM0LTkxNzItOGVhNTc0YWQ4N2Y02AIF4AIB&sid=0b7dc39daf150819aa7150ed91222f34&sb=1&sb_lp=1&src=index&src_elem=sb&error_url=https%3A%2F%2Fwww.booking.com%2Findex.html%3Flabel%3Dgen173nr-1FCAEoggI46AdIM1gEaEKIAQGYATG4ARfIAQzYAQHoAQH4AQKIAgGoAgO4Av2vjIMGwAIB0gIkY2QwZmVhMGMtMjAzZC00MzM0LTkxNzItOGVhNTc0YWQ4N2Y02AIF4AIB%3Bsid%3D0b7dc39daf150819aa7150ed91222f34%3Bclick_from_hp_logo%3D1%3Bsb_price_type%3Dtotal%3Bsrpvid%3Deb1c570e87b301d1%26%3B&ss=P%C3%A4rnu&is_ski_area=0&ssne=P%C3%A4rnu&ssne_untouched=P%C3%A4rnu&dest_id=-2624430&dest_type=city&checkin_year=2021&checkin_month=4&checkin_monthday=15&checkout_year=2021&checkout_month=4&checkout_monthday=18&group_adults=1&group_children=0&no_rooms=1&b_h4u_keep_filters=&from_sf=1" target="_blank">See Example</a></div>
+		  </div>
+        </div>
+		<div class="row front">
+          <div class="col-md-12">
+            <h1 class="fron_text"> Hidden costs</h1>
+            <p class="using_text">Expenses that are not normally included in the purchase price for a piece of equipment or machine e.g. maintenance, supplies, training, support and upgrades.</p>
+			<div class="red_bt more-info"><a href="{% url 'hidden-cost' %}">More Information</a></div>
+			<div class="red_bt see-exampl"><a href="#" target="_blank">See Example</a></div>
+		  </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+
+{% endblock %}

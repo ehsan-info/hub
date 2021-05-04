@@ -1,0 +1,31 @@
+{% extends 'views/layouts/app.html' %}
+{% block title %}Sneak into Basket{% endblock %}
+{% block content %}
+{% load static %}
+<div class="about_section layout_padding single-page">
+    	<div class="container">
+    		<div class="row">
+    			
+    			<div class="col-md-8">
+    				<div class="about_taital">
+    					<div class="about_text"><span style="color: #c6610f;">Sneak into Basket</span></div>
+    					<p class="dolor_text">As users buy something, the site sneaks an extra thing into the user's shopping basket. 
+    					This is accomplished utilizing opt-in/opt-out choices that are checked of course. Now and then, when taking the thing 
+    					off the user's cart, the user needs to go to a particular page to eliminate that thing.</p>
+    					<p class="dolor_text">cellularoutfitter.com</p>
+    					<p class="dolor_text">I don’t really know this company so I’m going to tell its story exactly as darkatterns.org describes it.</p>
+    					<p class="dolor_text">When you add 'Premium Ultra Edge Sturdy Shockproof Bumper Transparent Case, Black/Clear For Galaxy A51 5G' and go to cart page. 
+    					In the cart page Cellular Outfitter Universal Expandable Phone Holder, Black that costs $3.99 has been added to the cart automatically. 
+    					If the customer don't notice and uncheck this then the product will be ordered.</p>
+    					<div class="read_more single-page-read_more"><a href="{% url 'types-pattern' %}">Go Back</a></div>
+    				</div>
+    			</div>
+				<div class="col-md-4">
+    				<div class="tablet"><img src="{% static 'images/sneak-into-basket2.png' %}"></div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+
+{% endblock %}

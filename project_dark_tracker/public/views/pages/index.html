@@ -1,0 +1,44 @@
+{% extends 'views/layouts/app.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<div class="blog_section layout_padding"> 
+		<div class="about_section_2 ">
+		  <div class="container">
+			<div class="row">
+			  <div class="col-sm-12">
+				<div class="classified_text">WHAT ARE DARK PATTERNS?</div>
+			  </div>  
+			</div>
+			<div class="row front">
+			  
+			  <div class="col-md-12">
+				
+				<p class="using_text">Dark patterns is a term first coined by Harry Brignull in 2010. They are a facet of user interface design in which design is developed to nudge users towards an action they probably wouldn’t have taken otherwise, towards actions that benefit the ones doing the nudging.</p>
+				<p class="using_text">Forms of this psychological manipulation could often be interpreted as bad UX design but the reality is much more sinister – these dark patterns are there by design, and they’re not going anywhere.</p>
+				
+				<div class="embed-responsive embed-responsive-16by9">
+				  <iframe width="560" height="315" src="https://www.youtube.com/embed/Vl5EqNug3rI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			  </div>
+			</div>
+			<div class="row">
+			  <div class="col-sm-12">
+				<div class="classified_text">HOW DO DARK PATTERNS WORK?</div>
+			  </div>  
+			</div>
+			<div class="row front">
+			  
+			  <div class="col-md-12">
+				
+				<p class="using_text">When you use websites and apps, you don’t read every word on every page - you skim read and make assumptions. If a company wants to trick you into doing something, they can take advantage of this by making a page look like it is saying one thing when it is in fact saying another. You can defend yourself by learning about Dark Patterns on this site.</p>
+				<div class="red_bt"><a href="{% url 'types-pattern' %}">View Types of Dark Pattern</a></div>
+				
+			  </div>
+			</div>
+		  </div>
+		</div>
+	 </div>
+
+
+{% endblock %}

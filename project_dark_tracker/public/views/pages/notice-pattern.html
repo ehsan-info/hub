@@ -1,0 +1,129 @@
+{% extends 'views/layouts/app.html' %}
+{% block title %}Notice Pattern{% endblock %}
+{% block content %}
+
+<div class="about_section layout_padding single-page">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-md-4">
+    				<div class="about_taital">
+    					<div class="classified_text">Share your <span style="color: #c6610f;">experience</span></div>
+    					<p class="dolor_text">Raising awareness of UX dark patterns, with the help of practitioners and users.</p>
+    					{% if status %}
+    					    {% if status_code != 1 %}
+    					        <p style="color:red;">{{ status }}</p>
+    					    {% else %}
+                                <p style="color:green">{{ status }}</p>
+                            {% endif %}
+                                
+                          {% endif %}
+    				</div>
+    			</div>
+				<div class="col-md-8">
+    				
+					<div class="notice-user-form">
+						<form  method="post" enctype="multipart/form-data">
+						    {% csrf_token %}
+							<div class="form-group required">
+								<label for="exampleFormControlFile1"  class="control-label notice-text-bt">Pattern Source</label>
+								<input class="form-control" name="source" type="text" placeholder="" required="required">
+								<span style="color:red;">{{form.errors.source}}</span>
+							</div>
+							<div class="form-group required">
+								<label class="notice-text-bt">Pattern Type/s</label>
+								<small id="emailHelp" class="form-text text-muted">Pattern you are suspecting</small>
+								<span style="color:red;">{{form.errors.category_type}}</span>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" name="category_type"  value="Trick Question" id="tricky_quest">
+								<label class="form-check-label" for="tricky_quest">
+								Trick Question
+							  </label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" name="category_type" value="Sneak into Basket" id="sneak_into_basket">
+								<label class="form-check-label" for="sneak_into_basket">
+								Sneak into Basket
+							  </label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" name="category_type" value="Forced Continuity" id="forced_continuity">
+								<label class="form-check-label" for="forced_continuity">
+								Forced Continuity
+							  </label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" name="category_type" value="Misdirection" id="misdirection">
+								<label class="form-check-label" for="misdirection">
+								Misdirection
+							  </label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" name="category_type" value="Price Comparison Prevention" id="price_comparison">
+								<label class="form-check-label" for="price_comparison">
+								Price Comparison Prevention
+							  </label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" name="category_type" value="Force Cookies" id="forced_cookies">
+								<label class="form-check-label" for="forced_cookies">
+								Force Cookies
+							  </label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" name="category_type" value="Urgency" id="urgency">
+								<label class="form-check-label" for="urgency">
+								Urgency
+							  </label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" name="category_type" value="Confirmshaming" id="confirmshaming">
+								<label class="form-check-label" for="confirmshaming">
+								Confirmshaming
+							  </label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" name="category_type" value="Hidden costs" id="hidden_costs">
+								<label class="form-check-label" for="hidden_costs">
+								Hidden costs
+							  </label>
+							</div>
+							<div class="form-group required">
+								<label for="exampleFormControlFile1" class="control-label notice-text-bt">Pattern Image</label>
+								<label class="custom-file-upload">
+								<input type="file" class="form-control-file" name="image" id="exampleFormControlFile1" required="required">Upload Image File</label>
+								<span style="color:red;">{{form.errors.image}}</span>
+							</div>
+							<div class="form-group">
+								<label for="comment" class="notice-text-bt">Description</label>
+								<textarea class="form-control" rows="5" name="desc" id="comment"></textarea>
+								<span style="color:red;">{{form.errors.desc}}</span>
+							</div>
+							<div class="form-group">
+								<label for="exampleFormControlFile1" class="notice-text-bt">Your Name</label>
+								<input class="form-control" name="name"  type="text" placeholder="">
+								<span style="color:red;">{{form.errors.name}}</span>
+							</div>
+							<div class="form-group required">
+								<label for="exampleInputEmail1" class="control-label notice-text-bt">Your Email</label>
+								<input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required="required">
+								<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+								<span style="color:red;">{{form.errors.email}}</span>
+							</div>
+							<div class="form-check required">
+								<input class="form-check-input" type="checkbox" name="term_condition" value="Confirmshaming" id="term_condition"  required="required">
+								<label class="form-check-label" for="term_condition">
+								I am agree to store data of given url and other info for other use
+							  </label>
+							  <span style="color:red;">{{form.errors.term_condition}}</span>
+							</div>
+							<button type="submit" class="btn btn-primary send_bt">Submit</button>
+						</form>
+					</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+
+{% endblock %}

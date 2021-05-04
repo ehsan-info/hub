@@ -1,0 +1,30 @@
+{% extends 'views/layouts/app.html' %}
+{% block title %}Price Comparison Prevention{% endblock %}
+{% block content %}
+{% load static %}
+<div class="about_section layout_padding single-page">
+    	<div class="container">
+    		<div class="row">
+    			
+    			<div class="col-md-8">
+    				<div class="about_taital">
+    					<div class="about_text"><span style="color: #c6610f;">Price Comparison Prevention</span></div>
+    					<p class="dolor_text">In this pattern, Brignull explains that the retailer makes it hard for the user to compare the price of an item with another item, 
+    					so they cannot make an informed decision.</p>
+    					<p class="dolor_text">Retailers typically achieve this by creating different bundles where it is not easy work out the unit price of the items within the bundles. 
+    					This was a common practice with mobile operators in the early 2000s. Some supermarkets (e.g. Sainsburys, shown below) still use a similar technique, 
+    					selling packaged products without showing the price per weight. This makes it impossible to work out whether it's cheaper to buy loose items (priced per weight) or packaged item (priced per packet).</p>
+    					<p class="dolor_text">https://www.sainsburys.co.uk/</p>
+    					<p class="dolor_text">In the screenshot of sainsburys.co.uk below, it is not possible to compare the price of the first item to the second item.</p>
+    					<div class="read_more single-page-read_more"><a href="{% url 'types-pattern' %}">Go Back</a></div>
+    				</div>
+    			</div>
+				<div class="col-md-4">
+    				<div class="tablet"><img src="{% static 'images/price-comparison.png' %}"></div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+
+{% endblock %}

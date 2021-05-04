@@ -1,0 +1,30 @@
+{% extends 'views/layouts/app.html' %}
+{% block title %}Force Cookies{% endblock %}
+{% block content %}
+{% load static %}
+<div class="about_section layout_padding single-page">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-md-8">
+    				<div class="about_taital">
+    					<div class="about_text"><span style="color: #c6610f;">Force Cookies</span></div>
+    					<p class="dolor_text">If you’ve visited a new website on your phone or computer over the past 18 months or so, you’ve probably seen it: a notification informing you 
+    					that the page is using cookies to track you and asking you to agree to let it happen. The site invites you to read its “cookie policy,” 
+    					(which, let’s be honest, you’re not going to do), and it may tell you the tracking is to “enhance” your experience — even though it feels like it’s doing the opposite.</p>
+    					<p class="dolor_text">Cookies are small files that websites send to your device that the sites then use to monitor you and remember certain information 
+    					about you — like what’s in your shopping cart on an e-commerce site, or your login information. These pop-up cookie notices all over the internet are 
+    					well-meaning and supposed to promote transparency about your online privacy.</p>
+    					<p class="dolor_text">But in the end, they’re not doing much: Most of us just tediously click “yes” and move on. If you reject the cookie tracking, sometimes, 
+    					the website won’t work. But most of the time, you can just keep browsing. They’re not too different from the annoying pop-up ads we all ignore when we’re online.</p>
+    					<div class="read_more single-page-read_more"><a href="{% url 'types-pattern' %}">Go Back</a></div>
+    				</div>
+    			</div>
+				<div class="col-md-4">
+    				<div class="tablet"><img src="{% static 'images/force-cookies.png' %}"></div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+
+{% endblock %}

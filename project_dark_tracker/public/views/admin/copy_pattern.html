@@ -1,0 +1,249 @@
+{% extends "admin/base_site.html" %}
+
+{% block title %}List of patterns{% endblock %}
+
+{% block content %}
+<div id="content" class="flex">
+          
+          <h1>Select user to change</h1>
+          
+  <div id="content-main">
+    
+        <ul class="object-tools">
+          
+            
+
+
+  
+  <li>
+    
+    <a href="/admin/auth/user/add/" class="addlink">
+      Add user
+    </a>
+  </li>
+  
+
+
+          
+        </ul>
+    
+    
+    <div class="module filtered" id="changelist">
+      <div class="changelist-form-container">
+        
+
+<div id="toolbar"><form id="changelist-search" method="get">
+<div><!-- DIV needed for valid HTML -->
+<label for="searchbar"><img src="/static/admin/img/search.svg" alt="Search"></label>
+<input type="text" size="40" name="q" value="" id="searchbar" autofocus="">
+<input type="submit" value="Search">
+
+
+</div>
+</form></div>
+
+
+        
+
+        <form id="changelist-form" method="post" novalidate=""><input type="hidden" name="csrfmiddlewaretoken" value="JFEU2VFwD4U7JuZbomPPCLlyqygOWEamFZLZLeBC7KTxywWswV70DKcUn3TGl4FF">
+        
+
+        
+          
+<div class="actions">
+  
+    
+    <label>Action: <select name="action" required="">
+  <option value="" selected="">---------</option>
+
+  <option value="delete_selected">Delete selected users</option>
+
+</select></label><input type="hidden" name="select_across" value="0" class="select-across">
+    
+    
+    <button type="submit" class="button" title="Run the selected action" name="index" value="0">Go</button>
+    
+    
+    
+        <span class="action-counter" data-actions-icnt="1" style="display: inline;">0 of 1 selected</span>
+        
+    
+    
+  
+</div>
+
+          
+
+
+<div class="results">
+<table id="result_list">
+<thead>
+<tr>
+
+<th scope="col" class="action-checkbox-column">
+   
+   <div class="text"><span><input type="checkbox" id="action-toggle"></span></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" class="sortable column-username sorted ascending">
+   
+     
+       <div class="sortoptions">
+         <a class="sortremove" href="?o=" title="Remove from sorting"></a>
+         
+         <a href="?o=-1" class="toggle ascending" title="Toggle sorting"></a>
+       </div>
+     
+   
+   <div class="text"><a href="?o=-1">Username</a></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" class="sortable column-email">
+   
+     
+   
+   <div class="text"><a href="?o=2.1">Email address</a></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" class="sortable column-first_name">
+   
+     
+   
+   <div class="text"><a href="?o=3.1">First name</a></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" class="sortable column-last_name">
+   
+     
+   
+   <div class="text"><a href="?o=4.1">Last name</a></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" class="sortable column-is_staff">
+   
+     
+   
+   <div class="text"><a href="?o=5.1">Staff status</a></div>
+   <div class="clear"></div>
+</th>
+</tr>
+</thead>
+<tbody>
+
+
+<tr><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="1" class="action-select"></td><th class="field-username"><a href="/admin/auth/user/1/change/">darkadmin</a></th><td class="field-email">darkadmin@email.com</td><td class="field-first_name"></td><td class="field-last_name"></td><td class="field-is_staff"><img src="/static/admin/img/icon-yes.svg" alt="True"></td></tr>
+
+</tbody>
+</table>
+</div>
+
+
+          
+        
+        
+
+<p class="paginator">
+
+1 user
+
+
+</p>
+
+        </form>
+      </div>
+      
+        
+          <div id="changelist-filter">
+            <h2>Filter</h2>
+            
+            
+<h3> By staff status </h3>
+<ul>
+
+    <li class="selected">
+    <a href="?" title="All">All</a></li>
+
+    <li>
+    <a href="?is_staff__exact=1" title="Yes">Yes</a></li>
+
+    <li>
+    <a href="?is_staff__exact=0" title="No">No</a></li>
+
+</ul>
+
+<h3> By superuser status </h3>
+<ul>
+
+    <li class="selected">
+    <a href="?" title="All">All</a></li>
+
+    <li>
+    <a href="?is_superuser__exact=1" title="Yes">Yes</a></li>
+
+    <li>
+    <a href="?is_superuser__exact=0" title="No">No</a></li>
+
+</ul>
+
+<h3> By active </h3>
+<ul>
+
+    <li class="selected">
+    <a href="?" title="All">All</a></li>
+
+    <li>
+    <a href="?is_active__exact=1" title="Yes">Yes</a></li>
+
+    <li>
+    <a href="?is_active__exact=0" title="No">No</a></li>
+
+</ul>
+
+          </div>
+        
+      
+    </div>
+  </div>
+
+          
+          <br class="clear">
+        </div>
+        
+        
+<div id="content-main">
+<!--https://docs.huihoo.com/django/en/1.0/chapter17/index.html-->
+
+<br />
+<div class="result">
+    <table id="result_list">
+    <thead>
+        <tr>
+            <th scope="col" class="action-checkbox-column">
+               <div class="clear"></div>
+            </th>
+            <th scope="col" class="sortable column-username sorted ascending">
+                   pattern
+            </th>
+            <th scope="col" class="sortable column-email">
+                Category
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in data %}
+            <tr>
+                <td>{{item.0}}</td>
+                <td>{{item.1}}</td>
+                <td>{{item.2}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+</div>
+
+</div>
+
+
+
+
+{% endblock %}

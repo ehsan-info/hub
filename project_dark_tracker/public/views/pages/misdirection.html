@@ -1,0 +1,32 @@
+{% extends 'views/layouts/app.html' %}
+{% block title %}Misdirection{% endblock %}
+{% block content %}
+{% load static %}
+<div class="about_section layout_padding single-page">
+    	<div class="container">
+    		<div class="row">
+    			
+    			<div class="col-md-8">
+    				<div class="about_taital">
+    					<div class="about_text"><span style="color: #c6610f;">Misdirection</span></div>
+    					<p class="dolor_text">Misdirection is created when the user’s attention is guided to a specific place so they won’t notice something else that is happening. (Brignull, 2010)</p>
+    					<p class="dolor_text">One of the examples from the darkpatterns.org website was the Skype installation on Windows. But here is a broader example 
+    					because this has already happened to anyone when installing many other applications.</p>
+    					<p class="dolor_text">In many cases, the installation occurs in a pop-up window, where you have to read and go through multiple steps, configuring options when required. 
+    					But every UX designer knows that people don’t read, they scan. We are not saying it’s a habit that should be encouraged, but it’s reality. And, we are pretty 
+    					sure the designers for these installation processes also know it.</p>
+    					<p class="dolor_text">What happens, in the end, is that people only look at the window for enough time to find the buttons that will make the installation go through and 
+    					they click “ok” or “next” without giving it much thought. Throughout these windows, it’s common to see some other software or plug-in being “pushed” to the user, as they 
+    					leave the option that accepts these programs checked by default. When speeding through the interface, the user doesn’t realize that he accepted something unexpected.</p>
+    					<div class="read_more single-page-read_more"><a href="{% url 'types-pattern' %}">Go Back</a></div>
+    				</div>
+    			</div>
+				<div class="col-md-4">
+    				<div class="tablet"><img src="{% static 'images/misdirection.png' %}"></div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,87 @@
+<!-- https://github.com/st0p47/dark-patterns-recognition -->
+<!-- https://stackoverflow.com/questions/9515704/use-a-content-script-to-access-the-page-context-variables-and-functions -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&display=swap">
+    <!-- <link rel="stylesheet" href="assets/css/popup.css" type="text/css"> -->
+	<link rel="stylesheet" href="assets/css/insite.css">
+	
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+	<link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
+    
+    <script src="assets/js/popup.js"></script>
+	
+</head>
+
+<body id="dark_tracker_extension">
+	<div class="main-container">
+		<div class="main-sub-container">
+			<div class="modal-header">
+				<div>
+					<div class="modal-header-left">
+						<h1 class="logo">
+							<img class="logo-icon" src="assets/images/icon.png" />Dark Pattern Tracker
+							<span class="version">(1.1)</span>
+						</h1>
+					</div>
+					<div class="modal-header-right">
+						<a class="link" href="https://darktracker.xyz/"><i class="fa fa-question-circle" style="color:gray " ></i></a>
+						<a class="link" href="https://darktracker.xyz/"><i class="fa fa-cog" style="color:gray "></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="modal-content">
+				<div class="web-header"><h1 class="webstie-name">Website Name</h1></div>
+				<div class="container">
+					<p class="label">Find out dark patterns</p>
+					<p class="number">n/a</p>
+				</div>
+				<div class="button-list">
+					<p>Choose your option</p>
+					<div class ="auto-analyze-box">						
+						<label class="auto-analyze-text">Auto Analyze</label>
+						<label class="ext-dark-switch" style="float: right;
+						display: block;">
+							<input type="checkbox" class="ext-dark-checkbox" />
+							<span class="ext-dark-slider ext-dark-round"></span>
+						</label>
+						<span id="show_auto_analyze_error" style="display: block;color: red;"></span>
+					</div>
+					<div class="analyze-site-box" style="display: flow-root;margin-top: 10px;">
+						<button class="analyze-button" type="button" >Analyze site</button>
+						<button class="button-fetch">
+						  <i class="loading-icon fa fa-spinner fa-spin hide"></i>
+						  <span class="btn-txt">Fetch Data from Server</span>
+						</button>											
+					</div>
+					<span id="show_manual_button_error" style="display: block;color: red;"></span>	
+
+					<div class ="auto-analyze-box" style="display: flow-root;margin-top: 10px;">						
+						<label class="agree-term-condition" style="line-height: 3;">Allow extension to save site info for other use</label>
+						<label class="agree-term-condition-switch" style="float: right;
+						display: block;">
+							<input type="checkbox" class="agree-term-condition-checkbox" />
+							<span class="agree-term-condition-slider agree-term-condition-round"></span>
+						</label>
+						<span id="show_term_condition_error" style="display: block;color: red;"></span>
+					</div>
+				</div>
+				<div class="more-info">
+					<a href="https://darktracker.xyz/">More info about Dark Pattern</a>
+					<a href="https://darktracker.xyz/">Try our website</a>
+				</div>
+				<div class="result"></div>
+			</div>
+			<div class="modal-footer">
+				<a class="link" href="https://darktracker.xyz/" >What are dark patterns?</a>
+			</div>
+		</div>
+		
+	</div>
+    
+	
+</body>
+
+</html>

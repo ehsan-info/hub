@@ -1,0 +1,25 @@
+{% extends 'views/layouts/app.html' %}
+{% block title %}Urgency Scarcity{% endblock %}
+{% block content %}
+{% load static %}
+<div class="about_section layout_padding single-page">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-md-8">
+    				<div class="about_taital">
+    					<div class="about_text"><span style="color: #c6610f;">Fake Urgency Scarcity</span></div>
+    					<p class="dolor_text">There is a big difference between using persuasion to nudge users into making a positive decision with less stress and using untruthful pressure tactics. </p>
+    					<p class="dolor_text">Booking.com has been called out multiple times for using Scarcity untruthfully to pressure their customers into buying. This is a dark pattern. 
+    					It exploits the cognitive bias that people will respond to things that are scarce and thus manipulates the consumer.  </p>
+    					<div class="read_more single-page-read_more"><a href="{% url 'types-pattern' %}">Go Back</a></div>
+    				</div>
+    			</div>
+				<div class="col-md-4">
+    				<div class="tablet"><img src="{% static 'images/urgency-scarcity.png' %}"></div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+
+{% endblock %}

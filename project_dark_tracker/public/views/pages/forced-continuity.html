@@ -1,0 +1,26 @@
+{% extends 'views/layouts/app.html' %}
+{% block title %}Forced Continuity{% endblock %}
+{% block content %}
+{% load static %}
+<div class="about_section layout_padding single-page">
+    	<div class="container">
+    		<div class="row">
+    			
+    			<div class="col-md-8">
+    				<div class="about_taital">
+    					<div class="about_text"><span style="color: #c6610f;">Forced Continuity</span></div>
+    					<p class="dolor_text">Found on a large number of subscription based websites that give out free trial, Forced Continuity 
+    					is a dark pattern in which the user signs up for a free trial but has to enter their credit card details. When the trial ends, they start getting charged. 
+    					There’s no opportunity to opt out, no reminder, and no easy way to cancel the automatic charging of their credit card (Brignull, 2010).</p>
+    					<div class="read_more single-page-read_more"><a href="{% url 'types-pattern' %}">Go Back</a></div>
+    				</div>
+    			</div>
+				<div class="col-md-4">
+    				<div class="tablet"><img src="{% static 'images/force-continuity-01.png' %}"></div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+
+{% endblock %}

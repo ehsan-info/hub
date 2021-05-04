@@ -1,0 +1,280 @@
+{% extends "admin/base_site.html" %}
+
+{% block title %}List of category{% endblock %}
+
+{% block extrahead %}
+
+{% endblock %}
+
+{% block content %}
+
+<div id="content-main">
+    <ul class="object-tools">
+      <li>
+        <!--<a href="add" class="addlink">-->
+        <!--  Add Category-->
+        <!--</a>-->
+        <a href="javascript:void" class="addlink add_cat">
+          Add Category
+        </a>
+      </li>
+    </ul>
+        
+    <div class="result">
+        
+ <table id="result_list">
+    <thead>
+        <tr>
+            <th scope="col" class="action-checkbox-column">
+               <div class="clear"></div>
+            </th>
+            <th scope="col" class="sortable column-email">
+                Category
+            </th>
+            <th>Short Description</th>
+            <th>URL</th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        {% for item in data.category %}
+            {% if item|length > 0 %}
+            <tr>
+                <td >{{data.id|get_item:forloop.counter0}}</td>
+                <td class="elipse_text">{{item}}</td>
+                <td class="elipse_text">
+                    {% if data.short_desc|get_item:forloop.counter0|length > 0 %}
+                    {{data.short_desc|get_item:forloop.counter0}}
+                    {% endif %}
+                    </td>
+                <td class="elipse_text">
+                    {% if data.link|get_item:forloop.counter0|length > 0 %}
+                    {{data.link|get_item:forloop.counter0}}
+                    {% endif %}
+                    </td>
+                <td>
+                    <a href="javascript:void(0);" class="delete-category" style="text-decoration:none;color:red;font-size:20px;" data-index="{{data.id|get_item:forloop.counter0}}">&#128465;</a>
+                    <a href="javascript:void(0);" class="edit-category"  
+                    data-index="{{data.id|get_item:forloop.counter0}}" data-category="{{item}}" 
+                    data-desc="{% if data.short_desc|get_item:forloop.counter0|length > 0 %}{{data.short_desc|get_item:forloop.counter0}}{% endif %}" 
+                    data-link="{% if data.link|get_item:forloop.counter0|length > 0 %}{{data.link|get_item:forloop.counter0}}{% endif %}"
+                    style="text-decoration:none;color:green;
+                    -moz-transform: scale(1, -1);
+display: inline-block; 
+    font-size: 20px;
+
+    -webkit-transform: matrix(-1, 0, 0, 1, 0, 0);
+    -moz-transform: matrix(-1, 0, 0, 1, 0, 0);
+    -o-transform: matrix(-1, 0, 0, 1, 0, 0);
+    transform: matrix(-1, 0, 0, 1, 0, 0);">&#9998;</a>
+                </td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+    </tbody>
+    </table>
+    </div>
+</div>
+
+<input type="hidden" value="{{csrf_token}}" id="csrf_token_form" />
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+<script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+<script>
+    $(document).ready(function(){
+        $("a.delete-category").on("click",function(){
+            // console.log($(this).data('index'))
+            $.post('https://darktracker.xyz/tracer/deleteCategory/',{index:$(this).data('index'),csrfmiddlewaretoken:$("input#csrf_token_form").val()},function(data){
+                if(data.status_code==1){
+                    Swal.fire({
+                        icon: 'success',
+                      title: 'Category removed successfully!!',
+                      showDenyButton: false,
+                      showCancelButton: false,
+                      confirmButtonText: `Ok`,
+                    //   denyButtonText: `Don't save`,
+                    }).then((result) => {
+                      location.reload();
+                    })
+                }else{
+                    Swal.fire({
+                    icon: 'error',
+                  title: 'Failed to delete category!!!',
+                  showDenyButton: false,
+                  showCancelButton: false,
+                  confirmButtonText: `Ok`,
+                }).then((result) => {
+                    
+                })
+                }
+                console.log(data);
+            });
+        });
+        $("a.edit-category").on("click",function(){
+            var index = $(this).data('index');
+            var current_cat = $(this).data('category');
+            var short_desc = $(this).data('desc');
+            var link = $(this).data('link');
+Swal.fire({
+  title: 'Edit Category',
+//   input: 'text',
+html:`Category:<input id="category" type="text"  class="swal2-input" value="${current_cat}">
+    Short Desc: <textarea id="short_desc" type="text"  class="swal2-input">${short_desc}</textarea>
+    Link: <input id="link" type="text"  class="swal2-input" value="${link}" />`,
+  inputAttributes: {
+    autocapitalize: 'off'
+  },
+  showCancelButton: true,
+  confirmButtonText: 'Edit',
+  showLoaderOnConfirm: true,
+  preConfirm: (data) => {
+    //   console.log('data',data)
+cat= $('#category').val();
+desc= $('#short_desc').val();
+link= $('#link').val();
+    return fetch(`https://darktracker.xyz/tracer/updateCategory/`,
+    {
+  method: 'POST', // or 'PUT'
+  headers: {
+    'Content-Type': 'application/json',
+    "X-CSRFToken": $("input#csrf_token_form").val()
+  },
+  body: JSON.stringify({
+      csrfmiddlewaretoken:$("input#csrf_token_form").val(),
+      index:index,
+      short_desc:desc,
+      link:link,
+      newCat:cat
+      
+  }),
+})
+      .then(response => {
+          console.log('response',response);
+        if (!response.ok) {
+          throw new Error(response.statusText)
+        }
+        return response.json()
+      })
+      .catch(error => {
+        Swal.showValidationMessage(
+          `Request failed: ${error}`
+        )
+      })
+  },
+  allowOutsideClick: () => !Swal.isLoading()
+}).then((result) => {
+    console.log('result',result);
+  if (result.isConfirmed) {
+    Swal.fire({
+        icon: 'success',
+      title: 'Category updated successfully!!',
+      showDenyButton: false,
+      showCancelButton: false,
+      confirmButtonText: `Ok`,
+    }).then((result) => {
+      location.reload();
+    })
+  }else{
+      Swal.fire({
+        icon: 'error',
+      title: 'Failed to update category!!!',
+      showDenyButton: false,
+      showCancelButton: false,
+      confirmButtonText: `Ok`,
+    }).then((result) => {
+        
+    })
+  }
+})
+        });
+        
+     
+     $("a.add_cat").on("click",function(){
+Swal.fire({
+  title: 'Edit Category',
+//   input: 'text',
+//   inputAttributes: {
+//     autocapitalize: 'off'
+//   },
+html:`Category:<input id="category" type="text"  class="swal2-input" value="">
+    Short Desc: <textarea id="short_desc" type="text"  class="swal2-input"></textarea>
+    Link: <input id="link" type="text"  class="swal2-input" value="" />`,
+  showCancelButton: true,
+  confirmButtonText: 'Edit',
+  showLoaderOnConfirm: true,
+  preConfirm: (data) => {
+      console.log('data',data)
+    cat= $('#category').val();
+desc= $('#short_desc').val();
+link= $('#link').val();
+    return fetch(`https://darktracker.xyz/tracer/addCategory/`,
+    {
+  method: 'POST', // or 'PUT'
+  headers: {
+    'Content-Type': 'application/json',
+    "X-CSRFToken": $("input#csrf_token_form").val()
+  },
+  body: JSON.stringify({
+      csrfmiddlewaretoken:$("input#csrf_token_form").val(),
+      category:cat,
+      desc:desc,
+      link:link
+      
+  }),
+})
+      .then(response => {
+          console.log('response',response);
+        if (!response.ok) {
+          throw new Error(response.statusText)
+        }
+        return response.json()
+      })
+      .catch(error => {
+        Swal.showValidationMessage(
+          `Request failed: ${error}`
+        )
+      })
+  },
+  allowOutsideClick: () => !Swal.isLoading()
+}).then((result) => {
+    console.log('result',result);
+  if (result.isConfirmed) {
+    Swal.fire({
+        icon: 'success',
+      title: 'Category added successfully!!',
+      showDenyButton: false,
+      showCancelButton: false,
+      confirmButtonText: `Ok`,
+    }).then((result) => {
+      location.reload();
+    })
+  }else{
+      Swal.fire({
+        icon: 'error',
+      title: 'Failed to add category!!!',
+      showDenyButton: false,
+      showCancelButton: false,
+      confirmButtonText: `Ok`,
+    }).then((result) => {
+        
+    })
+  }
+})         
+     });   
+        
+        
+    });
+</script>
+{% endblock %}
+
+
+
+
+
+

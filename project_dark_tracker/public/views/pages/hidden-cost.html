@@ -1,0 +1,30 @@
+{% extends 'views/layouts/app.html' %}
+{% block title %}Hidden Cost{% endblock %}
+{% block content %}
+{% load static %}
+<div class="about_section layout_padding single-page">
+    	<div class="container">
+    		<div class="row">
+    			
+    			<div class="col-md-8">
+    				<div class="about_taital">
+    					<div class="about_text"><span style="color: #c6610f;">Hidden Cost</span></div>
+    					<p class="dolor_text">Brignull (2010) describes the pattern of a user going through multiple steps to checkout and after finally getting to the last step of the 
+    					checkout process, discovering some unexpected charges have appeared, e.g. delivery charges, tax, etc. as ‘hidden costs’.</p>
+    					<p class="dolor_text">This occurs when the user goes through multiple steps in a checkout process and, when he gets to the end, he discovers new and unexpected 
+    					costs were added to the total amount (fees, delivery costs, etc.).</p>
+    					<p class="dolor_text">Hidden costs have been around for as long as paid services, but they’re especially deceptive online. On the internet, 
+    					many websites can keep these fees hidden until the last possible second and slap on an ambiguous label.</p>
+    					<p class="dolor_text">Fees aren’t always bad, but they become a bigger problem when they’re disclosed too late.</p>
+    					<div class="read_more single-page-read_more"><a href="{% url 'types-pattern' %}">Go Back</a></div>
+    				</div>
+    			</div>
+				<div class="col-md-4">
+    				<div class="tablet"><img src="{% static 'images/hidden-cost.png' %}"></div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+
+{% endblock %}

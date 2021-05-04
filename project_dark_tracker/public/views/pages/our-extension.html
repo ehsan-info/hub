@@ -1,0 +1,48 @@
+{% extends 'views/layouts/app.html' %}
+{% load static %}
+{% block title %}Our Extension{% endblock %}
+{% block content %}
+<div class="blog_section layout_padding"> 
+		<div class="about_section_2 ">
+		  <div class="container">
+			<div class="row">
+			  <div class="col-sm-12">
+				<div class="classified_text">Our <span style="color: #c6610f;">Extension</span></div>
+			  </div>  
+			</div>
+			<div class="row front">
+			  <!--<div class="col-md-2">
+				<div class="about_img"><img src="images/img-1.png"></div>
+			  </div>-->
+			  <div class="col-md-8">
+			      <div class="about_taital">
+    				<p class="dolor_text">This extension will be able to track dark pattern in web pages.</p>
+    				<p class="dolor_text">Primarily this will work on popular browser such as Google Chrome, Mozilla Firefox, Opera, and Microsoft Edge</p>
+    				<p class="dolor_text">Click the download link belowand try our extension</p>
+    				<u><a href="#" target="_blank">Dark Tracker Extension</a></u>
+    		      </div>
+			  </div>
+			  <div class="col-md-4">
+    				<div class="tablet"><img src="{% static 'images/dark-pattern-extension-01.png' %}"></div>
+		      </div>
+			</div>
+			<div class="row">
+    			
+    			<div class="col-md-6">
+    				<div class="about_taital">
+    					<div class="about_text"><span style="color: #c6610f;">What Data We Store</span></div>
+    					<p class="dolor_text">Our first and prime concern is to care about our user's data. This system will never sell user's data to any third party organizations</p>
+    					<p class="dolor_text">We only store user's name, email address, the image he has uploaded, website source link and types of pattern. In the left you can see our 
+    					backend data table that store user's information</p>
+    				</div>
+    			</div>
+				<div class="col-md-6">
+    				<div class="tablet"><img src="{% static 'images/user-request-list.png' %}"></div>
+    			</div>
+    		</div>
+			
+		  </div>
+		</div>
+	  </div> 
+
+{% endblock %}

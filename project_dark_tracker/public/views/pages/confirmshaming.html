@@ -1,0 +1,30 @@
+{% extends 'views/layouts/app.html' %}
+{% block title %}Confirmshaming{% endblock %}
+{% block content %}
+{% load static %}
+<div class="about_section layout_padding single-page">
+    	<div class="container">
+    		<div class="row">
+    			
+    			<div class="col-md-8">
+    				<div class="about_taital">
+    					<div class="about_text"><span style="color: #c6610f;">Confirmshaming</span></div>
+    					<p class="dolor_text">Confirmshaming is the act of guilting the user into opting in to something. The option to decline is worded in such a way as to shame the 
+    					user into compliance. The most common use is to get a user to sign up for a mailing list, and it is often found in exit intent modals and other popups. 
+    					In the screenshot below,, Amazon uses confirmshaming to guilt users and discourage them from opting out.</p>
+    					<p class="dolor_text">Usually confirmshaming dark patterns are used with marketing mediums, such as asking users to provide their e-mail address in order to 
+    					receive a weekly newsletter, when trying to cancel a subscription to a service or when asking users to financially support a service. Not only this, 
+    					but usually the cancel option is not on an equal footing as the accept option: this can range from using a 
+    					different font size to using a whole different type of style on the button, making it much less visually appealing.</p>
+    					<div class="read_more single-page-read_more"><a href="{% url 'types-pattern' %}">Go Back</a></div>
+    				</div>
+    			</div>
+				<div class="col-md-4">
+    				<div class="tablet"><img src="{% static 'images/confirmshaming-02.png' %}"></div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+
+{% endblock %}
